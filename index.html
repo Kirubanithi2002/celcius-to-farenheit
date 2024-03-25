@@ -9,23 +9,36 @@
 </head>
 <body>
     <div id="wrapper">
-        <h2>celcius to farenheit</h2>
+        <h2>Palindrome Checker</h2>
         <div class="inputdiv">
-            <input type="text" id="input" placeholder="temparature in celcius">
+            <input type="text" id="input" placeholder="Palindrome Checker">
         </div>
         <div>
-            <button type="submit" onclick="convert()">Convert to farenheit</button>
+            <button type="submit" onclick="palindromeCheck()">Check</button>
         </div>
         <div id="result">
 
         </div>
     </div>
     <script>
-      function convert(){
-        const celciusVal = Number(document.getElementById("input").value);
-        const farenheitVal = (celciusVal* (9/5))+32 ;
-        const result = document.getElementById("result");
-        result.innerHTML = farenheitVal.toFixed(2) + " farenheit"; 
+      function palindromeCheck(){
+        let str = String(document.getElementById("input").value).replace(/\s/g, '');
+        let result = document.getElementById("result");
+        let res = true;
+        console.log(str);
+        
+        if(str.length < 2)
+            res = true;
+        for(let i = 0, j = str.length-1; i < j; i++,j--){
+           if(str.charAt(i).toLowerCase() != str.charAt(j).toLowerCase())
+            res = false; 
+        }
+        console.log(res);
+        if(res == true){
+            result.innerHTML = `This ia a Palindrome`;
+        } else {
+            result.innerHTML = `This ia not a Palindrome`;
+        }
       }
     </script>
 </body>
